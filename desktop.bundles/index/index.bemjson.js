@@ -102,9 +102,116 @@
                 content: [
                     {
                         elem: 'column',
+                        mix: { block: 'sidebar' },
                         elemMods: { side: 'left', border: 'right' },
                         content: [
-                            'правая колонка'
+                            {
+                                block: 'sidebar',
+                                elem: 'item',
+                                elemMods: { gap: 'off' },
+                                content: {
+                                    block: 'menu',
+                                    mods: { theme: 'islands', size: 'xl' },
+                                    content: [
+                                        { content: 'Рекомендации', url: 'recommend' },
+                                        { content: 'Лента событий', url: 'list-events' },
+                                        { content: 'Избранное', url: 'favorite' },
+                                        { content: 'Исполнители', url: 'artists' }
+                                    ].map(function(item) {
+
+                                        if(Array.isArray(item)) {
+                                            return {
+                                                elem: 'group',
+                                                title: item.title,
+                                                content: item.content.map(function(subitem) {
+                                                    return {
+                                                        block: 'menu-item',
+                                                        mods: { type: 'link' },
+                                                        content: {
+                                                            block : 'link',
+                                                            url : subitem.url,
+                                                            content : subitem.content
+                                                        }
+                                                    }
+                                                })
+                                            };
+                                        }
+
+                                        return {
+                                            block: 'menu-item',
+                                            mods: { type: 'link' },
+                                            content: {
+                                                block : 'link',
+                                                url : item.url,
+                                                content : item.content
+                                            }
+                                        };
+                                    })
+                                }
+                            },
+                            {
+                                block: 'sidebar',
+                                elem: 'item',
+                                content: [
+                                    {
+                                        elem: 'title',
+                                        content: 'Коллекции'
+                                    },
+                                    {
+                                        block : 'menu',
+                                        mods : { theme : 'islands', size : 'xl', mode : 'radio-check' },
+                                        val : 2,
+                                        content : [
+                                            {
+                                                block : 'menu-item',
+                                                val : 1,
+                                                content : 'for runs'
+                                            },
+                                            {
+                                                block : 'menu-item',
+                                                val : 2,
+                                                content : 'rock'
+                                            },
+                                            {
+                                                block : 'menu-item',
+                                                val : 3,
+                                                content : 'party'
+                                            },
+                                            {
+                                                block : 'menu-item',
+                                                val : 4,
+                                                content : 'techno'
+                                            },
+                                            {
+                                                elem: 'group',
+                                                title: 'Рекомендуемые',
+                                                content: [
+                                                    {
+                                                        block : 'menu-item',
+                                                        val : 5,
+                                                        content : 'Хиты 90-х'
+                                                    },
+                                                    {
+                                                        block : 'menu-item',
+                                                        val : 6,
+                                                        content : 'Dubstep'
+                                                    },
+                                                    {
+                                                        block : 'menu-item',
+                                                        val : 7,
+                                                        content : 'Trance'
+                                                    },
+                                                    {
+                                                        block : 'menu-item',
+                                                        val : 8,
+                                                        content : 'Techno'
+                                                    },
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
                         ]
                     },
                     {
@@ -118,7 +225,117 @@
                         elem: 'column',
                         elemMods: { side: 'right', border: 'left' },
                         content: [
-                            'правая колонка'
+                            {
+                                block: 'sidebar',
+                                elem: 'item',
+                                content: [
+                                    {
+                                        elem: 'title',
+                                        content: 'Участвует в проектах'
+                                    },
+                                    {
+                                        block: 'menu',
+                                        mods: { theme: 'islands', size: 'xl' },
+                                        content: [
+                                            {
+                                                content: 'Two fingers',
+                                                url: 'two-fingers',
+                                                img: '/img/artists/two-fingers.jpg'
+                                            },
+                                            {
+                                                content: 'Eskamon',
+                                                url: 'eskamon',
+                                                img: '/img/artists/eskamon.jpg'
+                                            }
+                                        ].map(function(item) {
+                                                return {
+                                                    block: 'menu-item',
+                                                    mods: { type: 'link', image: 'yes' },
+                                                    content: {
+                                                        block : 'link',
+                                                        mix: { block: 'menu-item', elem: 'link' },
+                                                        url : item.url,
+                                                        content : [
+                                                            {
+                                                                block: 'image',
+                                                                mix: { block: 'menu-item', elem: 'image' },
+                                                                alt: item.content,
+                                                                url: item.img
+                                                            },
+                                                            {
+                                                                elem: 'desc',
+                                                                content: item.content
+                                                            }
+                                                        ]
+                                                    }
+                                                };
+                                            })
+                                    }
+                                ]
+                            },
+                            {
+                                block: 'sidebar',
+                                elem: 'item',
+                                content: [
+                                    {
+                                        elem: 'title',
+                                        content: 'Похожие исполнители'
+                                    },
+                                    {
+                                        block: 'menu',
+                                        mods: { theme: 'islands', size: 'xl' },
+                                        content: [
+                                            {
+                                                content: 'Apparat',
+                                                url: 'apparat',
+                                                img: '/img/artists/apparat.jpg'
+                                            },
+                                            {
+                                                content: 'Modeselektor',
+                                                url: 'modeselektor',
+                                                img: '/img/artists/modeselektor.jpg'
+                                            },
+                                            {
+                                                content: 'Four tet',
+                                                url: 'four-tet',
+                                                img: '/img/artists/four-tet.jpg'
+                                            },
+                                            {
+                                                content: 'John hopkins',
+                                                url: 'john-hopkins',
+                                                img: '/img/artists/john-hopkins.jpg'
+                                            },
+                                            {
+                                                content: 'Thom yorke',
+                                                url: 'thom-yorke',
+                                                img: '/img/artists/thom-yorke.jpg'
+                                            }
+                                        ].map(function(item) {
+                                                return {
+                                                    block: 'menu-item',
+                                                    mods: { type: 'link', image: 'yes' },
+                                                    content: {
+                                                        block : 'link',
+                                                        mix: { block: 'menu-item', elem: 'link' },
+                                                        url : item.url,
+                                                        content : [
+                                                            {
+                                                                block: 'image',
+                                                                mix: { block: 'menu-item', elem: 'image' },
+                                                                alt: item.content,
+                                                                url: item.img
+                                                            },
+                                                            {
+                                                                elem: 'desc',
+                                                                content: item.content
+                                                            }
+                                                        ]
+                                                    }
+                                                };
+                                            })
+                                    }
+                                ]
+                            }
                         ]
                     }
                 ]
