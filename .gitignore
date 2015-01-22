@@ -9,6 +9,7 @@ npm-debug.log
 # bem
 .bem/cache/
 .enb/tmp/
+img/freeze/*
 *bundles*/*/*.*
 !*bundles*/*/*.bemjson.js
 !*bundles*/.bem/*

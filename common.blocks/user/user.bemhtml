@@ -1,0 +1,14 @@
+block('user')(
+    tag()('a'),
+    attrs()(function() {
+        return { href: '/users' + this.ctx.name };
+    }),
+    content()(function() {
+        var name = this.ctx.name;
+
+        return [
+            { elem: 'first-letter', content: name.charAt(0) },
+            name.slice(1)
+        ];
+    })
+);
