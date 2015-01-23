@@ -1,5 +1,10 @@
 {
   "freeze_paths": {
-      "./**": "img/freeze"
+      "img/**" : "dist/_",
+      "**/*.blocks/**" : "dist/_"
+  },
+
+  "paths" : {
+     "./dist/_" : "_/"
   }
 }

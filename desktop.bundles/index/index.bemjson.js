@@ -25,7 +25,7 @@
                                 content: {
                                     block: 'image',
                                     alt: 'Яндекс',
-                                    url: '/img/logo.svg'
+                                    url: '../../img/logo.svg'
                                 }
                             },
                             {
@@ -240,12 +240,12 @@
                                             {
                                                 content: 'Two fingers',
                                                 url: 'two-fingers',
-                                                img: '/img/artists/two-fingers.jpg'
+                                                img: '../../img/artists/two-fingers.jpg'
                                             },
                                             {
                                                 content: 'Eskamon',
                                                 url: 'eskamon',
-                                                img: '/img/artists/eskamon.jpg'
+                                                img: '../../img/artists/eskamon.jpg'
                                             }
                                         ].map(function(item) {
                                                 return {
@@ -288,27 +288,27 @@
                                             {
                                                 content: 'Apparat',
                                                 url: 'apparat',
-                                                img: '/img/artists/apparat.jpg'
+                                                img: '../../img/artists/apparat.jpg'
                                             },
                                             {
                                                 content: 'Modeselektor',
                                                 url: 'modeselektor',
-                                                img: '/img/artists/modeselektor.jpg'
+                                                img: '../../img/artists/modeselektor.jpg'
                                             },
                                             {
                                                 content: 'Four tet',
                                                 url: 'four-tet',
-                                                img: '/img/artists/four-tet.jpg'
+                                                img: '../../img/artists/four-tet.jpg'
                                             },
                                             {
                                                 content: 'John hopkins',
                                                 url: 'john-hopkins',
-                                                img: '/img/artists/john-hopkins.jpg'
+                                                img: '../../img/artists/john-hopkins.jpg'
                                             },
                                             {
                                                 content: 'Thom yorke',
                                                 url: 'thom-yorke',
-                                                img: '/img/artists/thom-yorke.jpg'
+                                                img: '../../img/artists/thom-yorke.jpg'
                                             }
                                         ].map(function(item) {
                                                 return {
