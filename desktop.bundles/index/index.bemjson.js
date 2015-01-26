@@ -1,6 +1,6 @@
 ({
     block : 'page',
-    title : 'Title of the page',
+    title : 'Яндекс.Музыка',
     favicon : '/favicon.ico',
     head : [
         { elem : 'meta', attrs : { name : 'description', content : '' } },
@@ -8,482 +8,446 @@
         { elem : 'css', url : '_index.css' }
     ],
     scripts: [{ elem : 'js', url : '_index.js' }],
-    mods : { theme : 'islands' },
-    content : [
-        {
-            block : 'header',
-            content : [
-                'header content goes here'
-            ]
-        },
-        {
-            block : 'content',
-            content : [
-                {
-                    tag : 'p',
-                    content : [
-                        'This is a demo page to show blocks from bem-components library. ',
-                        { tag : 'br' },
-                        'Feel free to replace it with your own content in desktop.bundles/index/index.bemjson.js.',
-                        { tag : 'br' },
-                        'For more info about BEM check out ',
-                        {
-                            block : 'link',
-                            url : 'http://bem.info/',
-                            content : 'bem.info'
-                        },
-                        '.'
-                    ]
-                },
-                { tag : 'h2', content : 'islands theme' },
-
-                {
-                    block : 'table',
-                    tag : 'table',
-                    attrs : { style : 'table-layout: fixed; width: 600px' },
-                    content : [
-                        {
-                            elem : 'row',
-                            tag : 'tr',
-                            content : [
-                                { elem : 'title', tag : 'th', content : 'size s' },
-                                { elem : 'title', tag : 'th', content : 'size m' },
-                                { elem : 'title', tag : 'th', content : 'size l' },
-                                { elem : 'title', tag : 'th', content : 'size xl' }
-                            ]
-                        },
-                        {
-                            elem : 'row',
-                            tag : 'tr',
-                            content : [
-                                { elem : 'cell', tag : 'td', size : 's' },
-                                { elem : 'cell', tag : 'td', size : 'm' },
-                                { elem : 'cell', tag : 'td', size : 'l' },
-                                { elem : 'cell', tag : 'td', size : 'xl' }
-                            ].map(function(cell) {
-                                cell.attrs = { style : 'width: 25%; vertical-align: top;' };
-                                cell.content = [
+    mods : { theme : 'music' },
+    content : {
+        elem: 'root',
+        content: [
+            {
+                block : 'header',
+                content : [
+                    {
+                        elem: 'side',
+                        mods: { align: 'left' },
+                        content: [
+                            {
+                                block: 'logo',
+                                mix: { block: 'header', elem: 'logo' },
+                                content: {
+                                    block: 'image',
+                                    alt: 'Яндекс',
+                                    url: '../../img/logo.svg'
+                                }
+                            },
+                            {
+                                elem: 'nameplate',
+                                url: '//music.yandex.ru',
+                                content: 'Музыка'
+                            },
+                            {
+                                block: 'form',
+                                action: '/',
+                                method: 'POST',
+                                content: {
+                                    block : 'control-group',
+                                    content : [
+                                        {
+                                            block : 'input',
+                                            mix: { block: 'header', elem: 'search-input' },
+                                            mods : { theme : 'islands', size : 'l', type : 'search' },
+                                            placeholder : 'Трек, исполнитель'
+                                        },
+                                        {
+                                            block : 'button',
+                                            mods : { theme : 'islands', size : 'l', type: 'submit' },
+                                            text : 'Поиск'
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        elem: 'side',
+                        mods: { align: 'right' },
+                        content: [
+                            {
+                                block: 'button',
+                                mix: {
+                                    block: 'header',
+                                    elem: 'action',
+                                    elemMods: { type: 'purchase' }
+                                },
+                                mods: { theme: 'islands', view: 'action', size: 'l' },
+                                text: 'Подписка',
+                                icon: {
+                                    block: 'icon',
+                                    mods: { type: 'purchase' }
+                                }
+                            },
+                            {
+                                block: 'button',
+                                mix: {
+                                    block: 'header',
+                                    elem: 'action',
+                                    elemMods: { type: 'love' }
+                                },
+                                mods: { theme: 'islands', size: 'l' },
+                                text: 'Моя музыка',
+                                icon: {
+                                    block: 'icon',
+                                    mods: { type: 'love' }
+                                }
+                            },
+                            {
+                                block: 'user',
+                                mix: { block: 'header', elem: 'user' },
+                                name: 'tavriaforever',
+                                content: [
                                     {
-                                        block : 'menu',
-                                        mods : { theme : 'islands', size : cell.size },
-                                        attrs : { style : 'border: 1px solid rgba(0, 0, 0, 0.1);' },
-                                        content : [
-                                            {
-                                                block : 'menu-item',
-                                                content : 'New'
-                                            },
-                                            {
-                                                block : 'menu-item',
-                                                mods : { disabled : true },
-                                                content : 'Open Recent'
-                                            },
-                                            {
-                                                elem : 'group',
-                                                title : 'Save',
-                                                content : [
-                                                    {
-                                                        block : 'menu-item',
-                                                        content : 'Save as...'
-                                                    },
-                                                    {
-                                                        block : 'menu-item',
-                                                        content : 'Export'
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                block : 'menu-item',
-                                                content : 'Close'
-                                            }
-                                        ]
+                                        block: 'image',
+                                        mix: { block: 'user', elem: 'picture' },
+                                        url: '../../img/user.jpg'
                                     },
-                                    { tag : 'br' },
+                                    {
+                                        elem: 'name'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                block: 'content',
+                content: [
+                    {
+                        elem: 'column',
+                        mix: { block: 'sidebar' },
+                        elemMods: { side: 'left', border: 'right' },
+                        content: [
+                            {
+                                block: 'sidebar',
+                                elem: 'item',
+                                elemMods: { gap: 'off' },
+                                content: {
+                                    block: 'menu',
+                                    mods: { theme: 'islands', size: 'xl' },
+                                    content: [
+                                        { content: 'Рекомендации', url: 'recommend' },
+                                        { content: 'Лента событий', url: 'list-events' },
+                                        { content: 'Избранное', url: 'favorite' },
+                                        { content: 'Исполнители', url: 'artists' }
+                                    ].map(function(item) {
+
+                                        if(Array.isArray(item)) {
+                                            return {
+                                                elem: 'group',
+                                                title: item.title,
+                                                content: item.content.map(function(subitem) {
+                                                    return {
+                                                        block: 'menu-item',
+                                                        mods: { type: 'link' },
+                                                        content: {
+                                                            block : 'link',
+                                                            url : subitem.url,
+                                                            content : subitem.content
+                                                        }
+                                                    }
+                                                })
+                                            };
+                                        }
+
+                                        return {
+                                            block: 'menu-item',
+                                            mods: { type: 'link' },
+                                            content: {
+                                                block : 'link',
+                                                url : item.url,
+                                                content : item.content
+                                            }
+                                        };
+                                    })
+                                }
+                            },
+                            {
+                                block: 'sidebar',
+                                elem: 'item',
+                                content: [
+                                    {
+                                        block: 'title',
+                                        mix: { block: 'sidebar', elem: 'title' },
+                                        level: 2,
+                                        content: 'Коллекции'
+                                    },
                                     {
                                         block : 'menu',
-                                        mods : { mode : 'check', theme : 'islands', size : cell.size },
-                                        attrs : { style : 'border: 1px solid rgba(0, 0, 0, 0.1);' },
+                                        mods : { theme : 'islands', size : 'xl', mode : 'radio-check' },
+                                        val : 2,
                                         content : [
                                             {
-                                                elem : 'group',
-                                                title : 'Automate',
-                                                content : [
-                                                    {
-                                                        block : 'menu-item',
-                                                        content : 'Batch'
-                                                    },
-                                                    {
-                                                        block : 'menu-item',
-                                                        content : 'Create Droplet'
-                                                    }
-                                                ]
+                                                block : 'menu-item',
+                                                val : 1,
+                                                content : 'for runs'
                                             },
                                             {
-                                                elem : 'group',
-                                                content : [
+                                                block : 'menu-item',
+                                                val : 2,
+                                                content : 'rock'
+                                            },
+                                            {
+                                                block : 'menu-item',
+                                                val : 3,
+                                                content : 'party'
+                                            },
+                                            {
+                                                block : 'menu-item',
+                                                val : 4,
+                                                content : 'techno'
+                                            },
+                                            {
+                                                elem: 'group',
+                                                title: 'Рекомендуемые',
+                                                content: [
                                                     {
                                                         block : 'menu-item',
-                                                        mods : { checked : true },
-                                                        content : [
-                                                            { block : 'icon', mods : { social : 'twitter' } },
-                                                            'Twitter'
-                                                        ]
+                                                        val : 5,
+                                                        content : 'Хиты 90-х'
                                                     },
                                                     {
                                                         block : 'menu-item',
-                                                        content : [
-                                                            { block : 'icon', mods : { social : 'vk' } },
-                                                            'VK'
-                                                        ]
-                                                    }
+                                                        val : 6,
+                                                        content : 'Dubstep'
+                                                    },
+                                                    {
+                                                        block : 'menu-item',
+                                                        val : 7,
+                                                        content : 'Trance'
+                                                    },
+                                                    {
+                                                        block : 'menu-item',
+                                                        val : 8,
+                                                        content : 'Techno'
+                                                    },
                                                 ]
                                             }
                                         ]
                                     }
-                                ];
-                                return cell;
-                            })
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        elem: 'column',
+                        elemMods: { side: 'center' },
+                        content: {
+                            block: 'artist',
+                            content: [
+                                {
+                                    elem: 'header',
+                                    content: [
+                                        {
+                                            elem: 'picture',
+                                            content: {
+                                                block: 'image',
+                                                alt: 'Amon Tobin',
+                                                url: '../../img/artists/amon-tobin.jpg'
+                                            }
+                                        },
+                                        {
+                                            elem: 'info',
+                                            content: [
+                                                {
+                                                    block: 'title',
+                                                    mix: { block: 'artist', elem: 'title' },
+                                                    level: 1,
+                                                    content: 'Amon Tobin'
+                                                },
+                                                {
+                                                    elem: 'description',
+                                                    source: {
+                                                        name: 'Википедия',
+                                                        url: 'ru.wikipedia.org'
+                                                    },
+                                                    content: 'Электронный музыкант, диджей и музыкальный продюсер, ' +
+                                                    'работающий в Великобритании'
+                                                },
+                                                {
+                                                    elem: 'footer',
+                                                    content: [
+                                                        {
+                                                            block: 'button',
+                                                            mix: { block: 'artist', elem: 'footer-item' },
+                                                            mods: { theme: 'islands', size: 'l' },
+                                                            text: 'Подписаться'
+                                                        },
+                                                        {
+                                                            block: 'button',
+                                                            mix: { block: 'artist', elem: 'footer-item' },
+                                                            mods: { theme: 'islands', size: 'l' },
+                                                            text: 'Радио'
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    block: 'tabs',
+                                    mix: { block: 'artist', elem: 'tabs' },
+                                    mods: { theme: 'islands', type: 'button', size: 'm' },
+                                    tabs: [
+                                        {
+                                            checked: true,
+                                            title: 'Всё',
+                                            content: {
+                                                block: 'player',
+                                                mods: { view: 'list' },
+                                                content: 'Все песни'
+                                            }
+                                        },
+                                        {
+                                            title: '5 альбомов',
+                                            content: {
+                                                block: 'player',
+                                                mods: { view: 'list' },
+                                                content: '5 альбомов'
+                                            }
+                                        },
+                                        {
+                                            title: '12 синглов',
+                                            content: {
+                                                block: 'player',
+                                                mods: { view: 'list' },
+                                                content: '12 синглов'
+                                            }
+                                        },
+                                        {
+                                            title: '8 сборников',
+                                            content: {
+                                                block: 'player',
+                                                mods: { view: 'list' },
+                                                content: '8 сборников'
+                                            }
+                                        },
+                                    ]
+                                }
+                            ]
                         }
-                    ]
-                },
-
-                { tag : 'br' },
-
-                {
-                    block : 'line',
-                    mods : { size : 's' },
-                    content : [
-                        'size s (24px height) ',
-                        {
-                            block : 'input',
-                            mods : { theme : 'islands', size : 's', 'has-clear' : true },
-                            val : 'value',
-                            placeholder : 'placeholder'
-                        },
-                        ' ',
-                        {
-                            block : 'button',
-                            mods : { theme : 'islands', size : 's' },
-                            text : 'button'
-                        },
-                        ' ',
-                        {
-                            block : 'button',
-                            mods : { theme : 'islands', size : 's' },
-                            text : 'button',
-                            icon : { block : 'icon', mods : { action : 'download' } }
-                        },
-                        ' ',
-                        {
-                            block : 'button',
-                            mods : { theme : 'islands', size : 's' },
-                            icon : { block : 'spin', mods : { theme : 'islands', size : 'xs', visible : true } },
-                            text : 'Loading...'
-                        },
-                        ' ',
-                        {
-                            block : 'radio-group',
-                            mods : { theme : 'islands', size : 's', type : 'button' },
-                            name : 'radio-sizes-s',
-                            options : [
-                                { val : 1, text : 'first' },
-                                { val : 2, text : 'second', checked : true }
-                            ]
-                        },
-                        ' ',
-                        {
-                            block : 'checkbox',
-                            mods : { theme : 'islands', size : 's', type : 'button' },
-                            val : 1,
-                            text : 'check'
-                        },
-                        ' ',
-                        {
-                            block : 'dropdown',
-                            mods : { switcher : 'button', theme : 'islands', size : 's' },
-                            switcher : 'dropdown',
-                            popup : { block : 'popup', mods : { theme : 'islands' }, content : 'popup' }
-                        },
-                        ' ',
-                        {
-                            block : 'select',
-                            mods : { mode : 'radio-check', theme : 'islands', size : 's' },
-                            name : 'select',
-                            text : 'first',
-                            options : [
-                                { val : 1, text : 'first', checked: true },
-                                { val : 2, text : 'second' }
-                            ]
-                        },
-                        ' ',
-                        {
-                            block : 'spin',
-                            mods : { theme : 'islands', size : 's', visible : true }
-                        }
-                    ]
-                },
-
-                { tag : 'br' },
-
-                {
-                    block : 'line',
-                    mods : { size : 'm' },
-                    content : [
-                        'size m (28px height) ',
-                        {
-                            block : 'input',
-                            mods : { theme : 'islands', size : 'm', 'has-clear' : true },
-                            val : 'value',
-                            placeholder : 'placeholder'
-                        },
-                        ' ',
-                        {
-                            block : 'button',
-                            mods : { theme : 'islands', size : 'm' },
-                            text : 'button'
-                        },
-                        ' ',
-                        {
-                            block : 'button',
-                            mods : { theme : 'islands', size : 'm' },
-                            text : 'button',
-                            icon : { block : 'icon', mods : { action : 'download' } }
-                        },
-                        ' ',
-                        {
-                            block : 'button',
-                            mods : { theme : 'islands', size : 'm' },
-                            icon : { block : 'spin', mods : { theme : 'islands', size : 's', visible : true } },
-                            text : 'Loading...'
-                        },
-                        ' ',
-                        {
-                            block : 'radio-group',
-                            mods : { theme : 'islands', size : 'm', type : 'button' },
-                            name : 'radio-sizes-m',
-                            options : [
-                                { val : 1, text : 'first' },
-                                { val : 2, text : 'second', checked : true }
-                            ]
-                        },
-                        ' ',
-                        {
-                            block : 'radio',
-                            mods : { theme : 'islands', size : 'm', checked : true },
-                            val : 1,
-                            text : 'radio'
-                        },
-                        ' ',
-                        {
-                            block : 'checkbox',
-                            mods : { theme : 'islands', size : 'm', checked : true },
-                            val : 1,
-                            text : 'check'
-                        },
-                        ' ',
-                        {
-                            block : 'checkbox',
-                            mods : { theme : 'islands', size : 'm', type : 'button', checked : true },
-                            val : 1,
-                            text : 'check'
-                        },
-                        ' ',
-                        {
-                            block : 'dropdown',
-                            mods : { switcher : 'button', theme : 'islands', size : 'm' },
-                            switcher : 'dropdown',
-                            popup : { block : 'popup', mods : { theme : 'islands' }, content : 'popup' }
-                        },
-                        ' ',
-                        {
-                            block : 'select',
-                            mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
-                            name : 'select',
-                            text : 'first',
-                            options : [
-                                { val : 1, text : 'first', checked: true },
-                                { val : 2, text : 'second' }
-                            ]
-                        },
-                        ' ',
-                        {
-                            block : 'spin',
-                            mods : { theme : 'islands', size : 'm', visible : true }
-                        }
-                    ]
-                },
-
-                { tag : 'br' },
-
-                {
-                    block : 'line',
-                    mods : { size : 'l' },
-                    content : [
-                        'size l (32px height) ',
-                        {
-                            block : 'input',
-                            mods : { theme : 'islands', size : 'l', 'has-clear' : true },
-                            val : 'value',
-                            placeholder : 'placeholder'
-                        },
-                        ' ',
-                        {
-                            block : 'button',
-                            mods : { theme : 'islands', size : 'l' },
-                            text : 'button'
-                        },
-                        ' ',
-                        {
-                            block : 'button',
-                            mods : { theme : 'islands', size : 'l' },
-                            text : 'button',
-                            icon : { block : 'icon', mods : { action : 'download' } }
-                        },
-                        ' ',
-                        {
-                            block : 'button',
-                            mods : { theme : 'islands', size : 'l' },
-                            icon : { block : 'spin', mods : { theme : 'islands', size : 'm', visible : true } },
-                            text : 'Loading...'
-                        },
-                        ' ',
-                        {
-                            block : 'radio-group',
-                            mods : { theme : 'islands', size : 'l', type : 'button' },
-                            name : 'radio-sizes-l',
-                            options : [
-                                { val : 1, text : 'first' },
-                                { val : 2, text : 'second', checked : true }
-                            ]
-                        },
-                        ' ',
-                        {
-                            block : 'radio',
-                            mods : { theme : 'islands', size : 'l', checked : true },
-                            val : 1,
-                            text : 'radio'
-                        },
-                        ' ',
-                        {
-                            block : 'checkbox',
-                            mods : { theme : 'islands', size : 'l', checked : true },
-                            val : 1,
-                            text : 'check'
-                        },
-                        ' ',
-                        {
-                            block : 'checkbox',
-                            mods : { theme : 'islands', size : 'l', type : 'button' },
-                            val : 1,
-                            text : 'check'
-                        },
-                        ' ',
-                        {
-                            block : 'dropdown',
-                            mods : { switcher : 'button', theme : 'islands', size : 'l' },
-                            switcher : 'dropdown',
-                            popup : { block : 'popup', mods : { theme : 'islands' }, content : 'popup' }
-                        },
-                        ' ',
-                        {
-                            block : 'select',
-                            mods : { mode : 'radio-check', theme : 'islands', size : 'l' },
-                            name : 'select',
-                            text : 'first',
-                            options : [
-                                { val : 1, text : 'first', checked: true },
-                                { val : 2, text : 'second' }
-                            ]
-                        },
-                        ' ',
-                        {
-                            block : 'spin',
-                            mods : { theme : 'islands', size : 'l', visible : true }
-                        }
-                    ]
-                },
-
-                { tag : 'br' },
-
-                {
-                    block : 'line',
-                    mods : { size : 'xl' },
-                    content : [
-                        'size xl (38px height) ',
-                        {
-                            block : 'input',
-                            mods : { theme : 'islands', size : 'xl', 'has-clear' : true },
-                            val : 'value',
-                            placeholder : 'placeholder'
-                        },
-                        ' ',
-                        {
-                            block : 'button',
-                            mods : { theme : 'islands', size : 'xl' },
-                            text : 'button'
-                        },
-                        ' ',
-                        {
-                            block : 'button',
-                            mods : { theme : 'islands', size : 'xl' },
-                            text : 'button',
-                            icon : { block : 'icon', mods : { action : 'download' } }
-                        },
-                        ' ',
-                        {
-                            block : 'button',
-                            mods : { theme : 'islands', size : 'xl' },
-                            icon : { block : 'spin', mods : { theme : 'islands', size : 'l', visible : true } },
-                            text : 'Loading...'
-                        },
-                        ' ',
-                        {
-                            block : 'radio-group',
-                            mods : { theme : 'islands', size : 'xl', type : 'button' },
-                            name : 'radio-sizes-xl',
-                            options : [
-                                { val : 1, text : 'first' },
-                                { val : 2, text : 'second', checked : true }
-                            ]
-                        },
-                        ' ',
-                        {
-                            block : 'checkbox',
-                            mods : { theme : 'islands', size : 'xl', type : 'button' },
-                            val : 1,
-                            text : 'check'
-                        },
-                        ' ',
-                        {
-                            block : 'dropdown',
-                            mods : { switcher : 'button', theme : 'islands', size : 'xl' },
-                            switcher : 'dropdown',
-                            popup : { block : 'popup', mods : { theme : 'islands' }, content : 'popup' }
-                        },
-                        ' ',
-                        {
-                            block : 'select',
-                            mods : { mode : 'radio-check', theme : 'islands', size : 'xl' },
-                            name : 'select',
-                            text : 'first',
-                            options : [
-                                { val : 1, text : 'first', checked: true },
-                                { val : 2, text : 'second' }
-                            ]
-                        },
-                        ' ',
-                        {
-                            block : 'spin',
-                            mods : { theme : 'islands', size : 'xl', visible : true }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            block : 'footer',
-            content : [
-                'footer content goes here'
-            ]
-        }
-    ]
+                    },
+                    {
+                        elem: 'column',
+                        elemMods: { side: 'right', border: 'left' },
+                        content: [
+                            {
+                                block: 'sidebar',
+                                elem: 'item',
+                                content: [
+                                    {
+                                        block: 'title',
+                                        mix: { block: 'sidebar', elem: 'title' },
+                                        level: 2,
+                                        content: 'Участвует в проектах'
+                                    },
+                                    {
+                                        block: 'menu',
+                                        mods: { theme: 'islands', size: 'xl' },
+                                        content: [
+                                            {
+                                                content: 'Two fingers',
+                                                url: 'two-fingers',
+                                                img: '../../img/artists/two-fingers.jpg'
+                                            },
+                                            {
+                                                content: 'Eskamon',
+                                                url: 'eskamon',
+                                                img: '../../img/artists/eskamon.jpg'
+                                            }
+                                        ].map(function(item) {
+                                                return {
+                                                    block: 'menu-item',
+                                                    mods: { type: 'link', image: 'yes' },
+                                                    content: {
+                                                        block : 'link',
+                                                        mix: { block: 'menu-item', elem: 'link' },
+                                                        url : item.url,
+                                                        content : [
+                                                            {
+                                                                block: 'image',
+                                                                mix: { block: 'menu-item', elem: 'image' },
+                                                                alt: item.content,
+                                                                url: item.img
+                                                            },
+                                                            {
+                                                                elem: 'desc',
+                                                                content: item.content
+                                                            }
+                                                        ]
+                                                    }
+                                                };
+                                            })
+                                    }
+                                ]
+                            },
+                            {
+                                block: 'sidebar',
+                                elem: 'item',
+                                content: [
+                                    {
+                                        block: 'title',
+                                        mix: { block: 'sidebar', elem: 'title' },
+                                        level: 2,
+                                        content: 'Похожие исполнители'
+                                    },
+                                    {
+                                        block: 'menu',
+                                        mods: { theme: 'islands', size: 'xl' },
+                                        content: [
+                                            {
+                                                content: 'Apparat',
+                                                url: 'apparat',
+                                                img: '../../img/artists/apparat.jpg'
+                                            },
+                                            {
+                                                content: 'Modeselektor',
+                                                url: 'modeselektor',
+                                                img: '../../img/artists/modeselektor.jpg'
+                                            },
+                                            {
+                                                content: 'Four tet',
+                                                url: 'four-tet',
+                                                img: '../../img/artists/four-tet.jpg'
+                                            },
+                                            {
+                                                content: 'John hopkins',
+                                                url: 'john-hopkins',
+                                                img: '../../img/artists/john-hopkins.jpg'
+                                            },
+                                            {
+                                                content: 'Thom yorke',
+                                                url: 'thom-yorke',
+                                                img: '../../img/artists/thom-yorke.jpg'
+                                            }
+                                        ].map(function(item) {
+                                                return {
+                                                    block: 'menu-item',
+                                                    mods: { type: 'link', image: 'yes' },
+                                                    content: {
+                                                        block : 'link',
+                                                        mix: { block: 'menu-item', elem: 'link' },
+                                                        url : item.url,
+                                                        content : [
+                                                            {
+                                                                block: 'image',
+                                                                mix: { block: 'menu-item', elem: 'image' },
+                                                                alt: item.content,
+                                                                url: item.img
+                                                            },
+                                                            {
+                                                                elem: 'desc',
+                                                                content: item.content
+                                                            }
+                                                        ]
+                                                    }
+                                                };
+                                            })
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
 })
