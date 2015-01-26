@@ -91,7 +91,17 @@
                             {
                                 block: 'user',
                                 mix: { block: 'header', elem: 'user' },
-                                name: 'tavriaforever'
+                                name: 'tavriaforever',
+                                content: [
+                                    {
+                                        block: 'image',
+                                        mix: { block: 'user', elem: 'picture' },
+                                        url: '../../img/user.jpg'
+                                    },
+                                    {
+                                        elem: 'name'
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -154,7 +164,9 @@
                                 elem: 'item',
                                 content: [
                                     {
-                                        elem: 'title',
+                                        block: 'title',
+                                        mix: { block: 'sidebar', elem: 'title' },
+                                        level: 2,
                                         content: 'Коллекции'
                                     },
                                     {
@@ -217,9 +229,101 @@
                     {
                         elem: 'column',
                         elemMods: { side: 'center' },
-                        content: [
-                            'центральная колонка'
-                        ]
+                        content: {
+                            block: 'artist',
+                            content: [
+                                {
+                                    elem: 'header',
+                                    content: [
+                                        {
+                                            elem: 'picture',
+                                            content: {
+                                                block: 'image',
+                                                alt: 'Amon Tobin',
+                                                url: '../../img/artists/amon-tobin.jpg'
+                                            }
+                                        },
+                                        {
+                                            elem: 'info',
+                                            content: [
+                                                {
+                                                    block: 'title',
+                                                    mix: { block: 'artist', elem: 'title' },
+                                                    level: 1,
+                                                    content: 'Amon Tobin'
+                                                },
+                                                {
+                                                    elem: 'description',
+                                                    source: {
+                                                        name: 'Википедия',
+                                                        url: 'ru.wikipedia.org'
+                                                    },
+                                                    content: 'Электронный музыкант, диджей и музыкальный продюсер, ' +
+                                                    'работающий в Великобритании'
+                                                },
+                                                {
+                                                    elem: 'footer',
+                                                    content: [
+                                                        {
+                                                            block: 'button',
+                                                            mix: { block: 'artist', elem: 'footer-item' },
+                                                            mods: { theme: 'islands', size: 'l' },
+                                                            text: 'Подписаться'
+                                                        },
+                                                        {
+                                                            block: 'button',
+                                                            mix: { block: 'artist', elem: 'footer-item' },
+                                                            mods: { theme: 'islands', size: 'l' },
+                                                            text: 'Радио'
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    block: 'tabs',
+                                    mix: { block: 'artist', elem: 'tabs' },
+                                    mods: { theme: 'islands', type: 'button', size: 'm' },
+                                    tabs: [
+                                        {
+                                            checked: true,
+                                            title: 'Всё',
+                                            content: {
+                                                block: 'player',
+                                                mods: { view: 'list' },
+                                                content: 'Все песни'
+                                            }
+                                        },
+                                        {
+                                            title: '5 альбомов',
+                                            content: {
+                                                block: 'player',
+                                                mods: { view: 'list' },
+                                                content: '5 альбомов'
+                                            }
+                                        },
+                                        {
+                                            title: '12 синглов',
+                                            content: {
+                                                block: 'player',
+                                                mods: { view: 'list' },
+                                                content: '12 синглов'
+                                            }
+                                        },
+                                        {
+                                            title: '8 сборников',
+                                            content: {
+                                                block: 'player',
+                                                mods: { view: 'list' },
+                                                content: '8 сборников'
+                                            }
+                                        },
+                                    ]
+                                }
+                            ]
+                        }
                     },
                     {
                         elem: 'column',
@@ -230,7 +334,9 @@
                                 elem: 'item',
                                 content: [
                                     {
-                                        elem: 'title',
+                                        block: 'title',
+                                        mix: { block: 'sidebar', elem: 'title' },
+                                        level: 2,
                                         content: 'Участвует в проектах'
                                     },
                                     {
@@ -278,7 +384,9 @@
                                 elem: 'item',
                                 content: [
                                     {
-                                        elem: 'title',
+                                        block: 'title',
+                                        mix: { block: 'sidebar', elem: 'title' },
+                                        level: 2,
                                         content: 'Похожие исполнители'
                                     },
                                     {

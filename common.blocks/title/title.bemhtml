@@ -1,0 +1,5 @@
+block('title')(
+    match(function() { return this.ctx.level; }).tag()(function() {
+        return 'h' + this.ctx.level;
+    })
+);

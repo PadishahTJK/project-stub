@@ -1,0 +1,10 @@
+block('user').elem('name')(
+    content()(function() {
+        var name = this._name;
+
+        return [
+            { elem: 'first-letter', content: name.charAt(0) },
+            name.slice(1)
+        ];
+    })
+);

@@ -31,7 +31,8 @@ var techs = {
         { path: 'libs/bem-components/design/common.blocks', check: false },
         { path: 'libs/bem-components/design/desktop.blocks', check: false },
         'common.blocks',
-        'desktop.blocks'
+        'desktop.blocks',
+        'hakaton.blocks'
     ],
 
     fse = require('fs-extra'),
@@ -91,7 +92,8 @@ module.exports = function(config) {
             [techs.bemhtml, { devMode: process.env.BEMHTML_ENV === 'development' }],
 
             // html
-            [techs.htmlFromBemjson, { target: '_?.html' }],
+            //[techs.htmlFromBemjson, { target: '_?.html' }],
+            [techs.htmlFromBemjson, { target: '?.html' }],
 
             // client bemhtml
             [enbBemTechs.depsByTechToBemdecl, {
@@ -123,11 +125,10 @@ module.exports = function(config) {
             [techs.prependYm, { source: '?.pre.js' }],
 
             // html beautify
-            [beautify, { htmlFile: '_?.borschik.html', target: '?.html' }],
-
+            //[beautify, { htmlFile: '_?.borschik.html', target: '?.html' }],
 
             // borschik
-            [techs.borschik, { sourceTarget: '_?.html', destTarget: '_?.borschik.html', freeze: isProd }],
+            [techs.borschik, { sourceTarget: '?.html', destTarget: '_?.html', freeze: isProd }],
             [techs.borschik, { sourceTarget: '?.js', destTarget: '_?.js', freeze: true, minify: isProd }],
             [techs.borschik, { sourceTarget: '?.css', destTarget: '_?.css', tech: 'cleancss', freeze: isProd, minify: isProd }]
         ]);
