@@ -2,6 +2,7 @@ var techs = {
         // essential
         fileProvider: require('enb/techs/file-provider'),
         fileMerge: require('enb/techs/file-merge'),
+        fileCopy: require('enb/techs/file-copy'),
 
         // optimization
         borschik: require('enb-borschik/techs/borschik'),
@@ -92,8 +93,8 @@ module.exports = function(config) {
             [techs.bemhtml, { devMode: process.env.BEMHTML_ENV === 'development' }],
 
             // html
-            //[techs.htmlFromBemjson, { target: '_?.html' }],
-            [techs.htmlFromBemjson, { target: '?.html' }],
+            [techs.htmlFromBemjson, { target: '_?.html' }],
+            //[techs.htmlFromBemjson, { target: '?.html' }],
 
             // client bemhtml
             [enbBemTechs.depsByTechToBemdecl, {
@@ -124,15 +125,29 @@ module.exports = function(config) {
             }],
             [techs.prependYm, { source: '?.pre.js' }],
 
-            // html beautify
-            //[beautify, { htmlFile: '_?.borschik.html', target: '?.html' }],
-
             // borschik
-            [techs.borschik, { sourceTarget: '?.html', destTarget: '_?.html', freeze: isProd }],
+            [techs.borschik, { sourceTarget: '_?.html', destTarget: '_?.borschik.html', freeze: isProd }],
             [techs.borschik, { sourceTarget: '?.js', destTarget: '_?.js', freeze: true, minify: isProd }],
             [techs.borschik, { sourceTarget: '?.css', destTarget: '_?.css', tech: 'cleancss', freeze: isProd, minify: isProd }]
         ]);
 
         nodeConfig.addTargets([/* '?.bemtree.js', */ '?.html', '_?.css', '_?.js']);
+    });
+
+    config.mode('development', function() {
+        config.nodes('*.bundles/*', function(nodeConfig) {
+            nodeConfig.addTechs([
+                [techs.fileCopy, { sourceTarget: '_?.borschik.html', destTarget: '?.html' }]
+            ]);
+        });
+    });
+
+    config.mode('production', function() {
+        config.nodes('*.bundles/*', function(nodeConfig) {
+            nodeConfig.addTechs([
+                // html beautify
+                [beautify, { htmlFile: '_?.borschik.html', target: '?.html' }]
+            ]);
+        });
     });
 };
