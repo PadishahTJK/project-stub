@@ -166,7 +166,7 @@
                                     {
                                         block: 'title',
                                         mix: { block: 'sidebar', elem: 'title' },
-                                        level: 2,
+                                        mods: { level: 3 },
                                         content: 'Коллекции'
                                     },
                                     {
@@ -249,7 +249,7 @@
                                                 {
                                                     block: 'title',
                                                     mix: { block: 'artist', elem: 'title' },
-                                                    level: 1,
+                                                    mods: { level: 1 },
                                                     content: 'Amon Tobin'
                                                 },
                                                 {
@@ -288,12 +288,82 @@
                                     mods: { theme: 'islands', type: 'button', size: 'm' },
                                     tabs: [
                                         {
-                                            checked: true,
                                             title: 'Всё',
+                                            checked: true,
                                             content: {
                                                 block: 'player',
+                                                mix: { block: 'artist', elem: 'player' },
                                                 mods: { view: 'list' },
-                                                content: 'Все песни'
+                                                content: [
+                                                    {
+                                                        elem: 'side',
+                                                        mods: { align: 'left' },
+                                                        content: {
+                                                            block: 'album',
+                                                            content: [
+                                                                [
+                                                                    {
+                                                                        block: 'image',
+                                                                        mix: { block: 'album', elem: 'picture' },
+                                                                        alt: 'Обложка',
+                                                                        url: '../../img/album/amon-tobin.jpg'
+                                                                    },
+                                                                    {
+                                                                        block: 'title',
+                                                                        mix: { block: 'album', elem: 'title' },
+                                                                        mods: { level: 6 },
+                                                                        content: 'Isam'
+                                                                    },
+                                                                    {
+                                                                        elem: 'created',
+                                                                        content: '2011'
+                                                                    },
+                                                                    {
+                                                                        block: 'player-actions',
+                                                                        mix: { block: 'album', elem: 'actions' },
+                                                                        mods: { size: 'm' },
+                                                                        js: { userId: 15, id: 140, type: 'album' },
+                                                                        content: [
+                                                                            {
+                                                                                block: 'link',
+                                                                                mix: { block: 'player-actions', elem: 'item' },
+                                                                                mods: { pseudo: true },
+                                                                                title: 'Играть',
+                                                                                content: {
+                                                                                    block: 'icon',
+                                                                                    mix: { block: 'player-actions', elem: 'icon' },
+                                                                                    mods: { player: 'play' },
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                block: 'link',
+                                                                                mix: { block: 'player-actions', elem: 'item' },
+                                                                                mods: { pseudo: true },
+                                                                                title: 'Поделиться',
+                                                                                content: {
+                                                                                    block: 'icon',
+                                                                                    mix: { block: 'player-actions', elem: 'icon' },
+                                                                                    mods: { player: 'share' }
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                block: 'link',
+                                                                                mix: { block: 'player-actions', elem: 'item' },
+                                                                                mods: { pseudo: true },
+                                                                                title: 'Добавить в избранное',
+                                                                                content: {
+                                                                                    block: 'icon',
+                                                                                    mix: { block: 'player-actions', elem: 'icon' },
+                                                                                    mods: { player: 'favorite' }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
                                             }
                                         },
                                         {
@@ -336,7 +406,7 @@
                                     {
                                         block: 'title',
                                         mix: { block: 'sidebar', elem: 'title' },
-                                        level: 2,
+                                        mods: { level: 3 },
                                         content: 'Участвует в проектах'
                                     },
                                     {
@@ -386,7 +456,7 @@
                                     {
                                         block: 'title',
                                         mix: { block: 'sidebar', elem: 'title' },
-                                        level: 2,
+                                        mods: { level: 3 },
                                         content: 'Похожие исполнители'
                                     },
                                     {

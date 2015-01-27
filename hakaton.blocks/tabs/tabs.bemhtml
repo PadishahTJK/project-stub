@@ -27,7 +27,7 @@ block('tabs')(
             });
 
             if(!hasSelected && tab.checked === true) {
-                radioGroup.options[i].checked = true;
+                radioGroup.val = i;
                 hasSelected = true;
                 tabBox.mods = { selected : true };
             }
