@@ -1,0 +1,9 @@
+block('user')(
+    def()(function() {
+        return applyNext({ _name: this.ctx.name });
+    }),
+    tag()('a'),
+    attrs()(function() {
+        return { href: '/users/' + this._name };
+    })
+);
