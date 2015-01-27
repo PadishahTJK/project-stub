@@ -1,6 +1,5 @@
 ({
-    mustDeps: {
-        block: 'button',
-        mods: { theme: 'islands', size: 'l', view: 'action' }
-    }
+    mustDeps: [
+        { block: 'button', mods: { theme: 'islands', size: 'l', view: 'action' } }
+    ]
 })
