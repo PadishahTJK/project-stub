@@ -76,11 +76,7 @@
                             },
                             {
                                 block: 'button',
-                                mix: {
-                                    block: 'header',
-                                    elem: 'action',
-                                    elemMods: { type: 'love' }
-                                },
+                                mix: { block: 'header', elem: 'action' },
                                 mods: { theme: 'islands', size: 'l' },
                                 text: 'Моя музыка',
                                 icon: {
@@ -128,16 +124,35 @@
                                         { content: 'Избранное', url: 'favorite' },
                                         { content: 'Исполнители', url: 'artists' }
                                     ].map(function(item) {
-                                        return {
-                                            block: 'menu-item',
-                                            mods: { type: 'link' },
-                                            content: {
-                                                block : 'link',
-                                                url : item.url,
-                                                content : item.content
+
+                                            if(Array.isArray(item)) {
+                                                return {
+                                                    elem: 'group',
+                                                    title: item.title,
+                                                    content: item.content.map(function(subitem) {
+                                                        return {
+                                                            block: 'menu-item',
+                                                            mods: { type: 'link' },
+                                                            content: {
+                                                                block : 'link',
+                                                                url : subitem.url,
+                                                                content : subitem.content
+                                                            }
+                                                        }
+                                                    })
+                                                };
                                             }
-                                        };
-                                    })
+
+                                            return {
+                                                block: 'menu-item',
+                                                mods: { type: 'link' },
+                                                content: {
+                                                    block : 'link',
+                                                    url : item.url,
+                                                    content : item.content
+                                                }
+                                            };
+                                        })
                                 }
                             },
                             {
@@ -210,7 +225,366 @@
                     {
                         elem: 'column',
                         elemMods: { side: 'center' },
-                        content: 'Страница артиста'
+                        content: {
+                            block: 'artist',
+                            content: [
+                                {
+                                    elem: 'header',
+                                    content: [
+                                        {
+                                            elem: 'picture',
+                                            content: {
+                                                block: 'image',
+                                                alt: 'Amon Tobin',
+                                                url: '../../img/artists/amon-tobin.jpg'
+                                            }
+                                        },
+                                        {
+                                            elem: 'info',
+                                            content: [
+                                                {
+                                                    block: 'title',
+                                                    mix: { block: 'artist', elem: 'title' },
+                                                    mods: { level: 1 },
+                                                    content: 'Amon Tobin'
+                                                },
+                                                {
+                                                    elem: 'description',
+                                                    source: {
+                                                        name: 'Википедия',
+                                                        url: '//ru.wikipedia.org'
+                                                    },
+                                                    content: 'Электронный музыкант, диджей и музыкальный продюсер, ' +
+                                                    'работающий в Великобритании'
+                                                },
+                                                {
+                                                    elem: 'footer',
+                                                    content: [
+                                                        {
+                                                            block: 'button',
+                                                            mix: { block: 'artist', elem: 'footer-item' },
+                                                            mods: { theme: 'islands', size: 'l' },
+                                                            text: 'Подписаться'
+                                                        },
+                                                        {
+                                                            block: 'button',
+                                                            mix: { block: 'artist', elem: 'footer-item' },
+                                                            mods: { theme: 'islands', size: 'l' },
+                                                            text: 'Радио'
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    block: 'tabs',
+                                    mix: { block: 'artist', elem: 'tabs' },
+                                    mods: { theme: 'islands', type: 'button', size: 'm' },
+                                    tabs: [
+                                        {
+                                            title: 'Всё',
+                                            checked: true,
+                                            content: [
+                                                {
+                                                    block: 'player',
+                                                    mix: { block: 'artist', elem: 'player' },
+                                                    mods: { view: 'list' },
+                                                    content: [
+                                                        {
+                                                            elem: 'side',
+                                                            mods: { align: 'left' },
+                                                            content: {
+                                                                block: 'album',
+                                                                content: [
+                                                                    {
+                                                                        block: 'image',
+                                                                        mix: { block: 'album', elem: 'picture' },
+                                                                        alt: 'Обложка',
+                                                                        url: '../../img/album/amon-tobin.jpg'
+                                                                    },
+                                                                    {
+                                                                        block: 'title',
+                                                                        mix: { block: 'album', elem: 'title' },
+                                                                        mods: { level: 6 },
+                                                                        content: 'Isam'
+                                                                    },
+                                                                    {
+                                                                        elem: 'created',
+                                                                        content: '2011'
+                                                                    },
+                                                                    {
+                                                                        block: 'player-actions',
+                                                                        mix: { block: 'album', elem: 'actions' },
+                                                                        mods: { type: 'button' },
+                                                                        content: [
+                                                                            {
+                                                                                block: 'button',
+                                                                                mix: { block: 'player-actions', elem: 'item' },
+                                                                                mods: {
+                                                                                    theme: 'islands',
+                                                                                    pseudo: true,
+                                                                                    size: 'm',
+                                                                                    type: 'play'
+                                                                                },
+                                                                                title: 'Играть',
+                                                                                icon: {
+                                                                                    block: 'icon',
+                                                                                    mix: { block: 'player-actions', elem: 'icon' },
+                                                                                    mods: { player: 'play' },
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                block: 'button',
+                                                                                mix: { block: 'player-actions', elem: 'item' },
+                                                                                mods: { theme: 'islands', pseudo: true, size: 'm' },
+                                                                                title: 'Поделиться',
+                                                                                icon: {
+                                                                                    block: 'icon',
+                                                                                    mix: { block: 'player-actions', elem: 'icon' },
+                                                                                    mods: { player: 'share' }
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                block: 'button',
+                                                                                mix: { block: 'player-actions', elem: 'item' },
+                                                                                mods: { theme: 'islands', pseudo: true, size: 'm' },
+                                                                                title: 'Добавить в избранное',
+                                                                                icon: {
+                                                                                    block: 'icon',
+                                                                                    mix: { block: 'player-actions', elem: 'icon' },
+                                                                                    mods: { player: 'favorite' }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            elem: 'side',
+                                                            mods: { align: 'right' },
+                                                            content: {
+                                                                elem: 'list',
+                                                                content: [
+                                                                    { name: 'Journeyman', time: '2:50', song: '../../songs/song.ogg' },
+                                                                    { name: 'Piece of Paper', time: '3:45', song: '../../songs/song.ogg' },
+                                                                    { name: 'Goto 10', time: '3:20', song: '../../songs/song.ogg' },
+                                                                    { name: 'Surge', time: '3:20', song: '../../songs/song.ogg' },
+                                                                    { name: 'Lost & Found', time: '1:49', song: '../../songs/song.ogg' },
+                                                                    { name: 'Wooden Toy', time: '1:49', song: '../../songs/song.ogg' },
+                                                                    { name: 'Mass & Spring', time: '2:48', song: '../../songs/song.ogg' },
+                                                                    { name: 'Calculate', time: '5:06', song: '../../songs/song.ogg' },
+                                                                    { name: 'Kitty Cat', time: '1:37', song: '../../songs/song.ogg' },
+                                                                    { name: 'Bedtime Stories', time: '2:21', song: '../../songs/song.ogg' },
+                                                                    { name: 'Night Swim', time: '2:02', song: '../../songs/song.ogg' },
+                                                                    { name: 'Dropped From the Sky', time: '6:31', song: '../../songs/song.ogg' }
+                                                                ].map(function(item, idx) {
+                                                                        var id = idx + 1;
+
+                                                                        return {
+                                                                            block: 'player-item',
+                                                                            js: { song: item.song },
+                                                                            mods: { active: item.active },
+                                                                            content: [
+                                                                                {
+                                                                                    block: 'link',
+                                                                                    mix: {
+                                                                                        block: 'player-item',
+                                                                                        elem: 'button',
+                                                                                        elemMods: { action: 'play' }
+                                                                                    },
+                                                                                    mods: { pseudo: true },
+                                                                                    content: {
+                                                                                        block: 'icon',
+                                                                                        mix: { block: 'player-item', elem: 'button-icon' },
+                                                                                        mods: { player: 'play' }
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    elem: 'number',
+                                                                                    content: id
+                                                                                },
+                                                                                {
+                                                                                    elem: 'name',
+                                                                                    content: item.name
+                                                                                },
+                                                                                {
+                                                                                    elem: 'time',
+                                                                                    content: item.time
+                                                                                }
+                                                                            ]
+                                                                        };
+                                                                    })
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    block: 'player',
+                                                    mix: { block: 'artist', elem: 'player' },
+                                                    mods: { view: 'list' },
+                                                    content: [
+                                                        {
+                                                            elem: 'side',
+                                                            mods: { align: 'left' },
+                                                            content: {
+                                                                block: 'album',
+                                                                content: [
+                                                                    {
+                                                                        block: 'image',
+                                                                        mix: { block: 'album', elem: 'picture' },
+                                                                        alt: 'Обложка',
+                                                                        url: '../../img/album/amon-tobin.jpg'
+                                                                    },
+                                                                    {
+                                                                        block: 'title',
+                                                                        mix: { block: 'album', elem: 'title' },
+                                                                        mods: { level: 6 },
+                                                                        content: 'Isam'
+                                                                    },
+                                                                    {
+                                                                        elem: 'created',
+                                                                        content: '2011'
+                                                                    },
+                                                                    {
+                                                                        block: 'player-actions',
+                                                                        mix: { block: 'album', elem: 'actions' },
+                                                                        mods: { type: 'button' },
+                                                                        content: [
+                                                                            {
+                                                                                block: 'button',
+                                                                                mix: { block: 'player-actions', elem: 'item' },
+                                                                                mods: {
+                                                                                    theme: 'islands',
+                                                                                    pseudo: true,
+                                                                                    size: 'm',
+                                                                                    type: 'play'
+                                                                                },
+                                                                                title: 'Играть',
+                                                                                icon: {
+                                                                                    block: 'icon',
+                                                                                    mix: { block: 'player-actions', elem: 'icon' },
+                                                                                    mods: { player: 'play' },
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                block: 'button',
+                                                                                mix: { block: 'player-actions', elem: 'item' },
+                                                                                mods: { theme: 'islands', pseudo: true, size: 'm' },
+                                                                                title: 'Поделиться',
+                                                                                icon: {
+                                                                                    block: 'icon',
+                                                                                    mix: { block: 'player-actions', elem: 'icon' },
+                                                                                    mods: { player: 'share' }
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                block: 'button',
+                                                                                mix: { block: 'player-actions', elem: 'item' },
+                                                                                mods: { theme: 'islands', pseudo: true, size: 'm' },
+                                                                                title: 'Добавить в избранное',
+                                                                                icon: {
+                                                                                    block: 'icon',
+                                                                                    mix: { block: 'player-actions', elem: 'icon' },
+                                                                                    mods: { player: 'favorite' }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            elem: 'side',
+                                                            mods: { align: 'right' },
+                                                            content: {
+                                                                elem: 'list',
+                                                                content: [
+                                                                    { name: 'Journeyman', time: '2:50' },
+                                                                    { name: 'Piece of Paper', time: '3:45' },
+                                                                    { name: 'Goto 10', time: '3:20' },
+                                                                    { name: 'Surge', time: '3:20' },
+                                                                    { name: 'Lost & Found', time: '1:49' },
+                                                                    { name: 'Wooden Toy', time: '1:49' },
+                                                                    { name: 'Mass & Spring', time: '2:48' },
+                                                                    { name: 'Calculate', time: '5:06' },
+                                                                    { name: 'Kitty Cat', time: '1:37' },
+                                                                    { name: 'Bedtime Stories', time: '2:21' },
+                                                                    { name: 'Night Swim', time: '2:02' },
+                                                                    { name: 'Dropped From the Sky', time: '6:31' }
+                                                                ].map(function(item, idx) {
+                                                                        var id = idx + 1;
+
+                                                                        return {
+                                                                            block: 'player-item',
+                                                                            js: { song: item.song },
+                                                                            mods: { active: item.active },
+                                                                            content: [
+                                                                                {
+                                                                                    block: 'link',
+                                                                                    mix: {
+                                                                                        block: 'player-item',
+                                                                                        elem: 'button',
+                                                                                        elemMods: { action: 'play' }
+                                                                                    },
+                                                                                    mods: { pseudo: true },
+                                                                                    content: {
+                                                                                        block: 'icon',
+                                                                                        mix: { block: 'player-item', elem: 'button-icon' },
+                                                                                        mods: { player: 'play' }
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    elem: 'number',
+                                                                                    content: id
+                                                                                },
+                                                                                {
+                                                                                    elem: 'name',
+                                                                                    content: item.name
+                                                                                },
+                                                                                {
+                                                                                    elem: 'time',
+                                                                                    content: item.time
+                                                                                }
+                                                                            ]
+                                                                        };
+                                                                    })
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            title: '5 альбомов',
+                                            content: {
+                                                block: 'player',
+                                                mods: { view: 'list' },
+                                                content: '5 альбомов'
+                                            }
+                                        },
+                                        {
+                                            title: '12 синглов',
+                                            content: {
+                                                block: 'player',
+                                                mods: { view: 'list' },
+                                                content: '12 синглов'
+                                            }
+                                        },
+                                        {
+                                            title: '8 сборников',
+                                            content: {
+                                                block: 'player',
+                                                mods: { view: 'list' },
+                                                content: '8 сборников'
+                                            }
+                                        },
+                                    ]
+                                }
+                            ]
+                        }
                     },
                     {
                         elem: 'column',
@@ -248,7 +622,18 @@
                                                         block : 'link',
                                                         mix: { block: 'menu-item', elem: 'link' },
                                                         url : item.url,
-                                                        content : item.content
+                                                        content : [
+                                                            {
+                                                                block: 'image',
+                                                                mix: { block: 'menu-item', elem: 'image' },
+                                                                alt: item.content,
+                                                                url: item.img
+                                                            },
+                                                            {
+                                                                elem: 'desc',
+                                                                content: item.content
+                                                            }
+                                                        ]
                                                     }
                                                 };
                                             })
@@ -302,7 +687,18 @@
                                                         block : 'link',
                                                         mix: { block: 'menu-item', elem: 'link' },
                                                         url : item.url,
-                                                        content : item.content
+                                                        content : [
+                                                            {
+                                                                block: 'image',
+                                                                mix: { block: 'menu-item', elem: 'image' },
+                                                                alt: item.content,
+                                                                url: item.img
+                                                            },
+                                                            {
+                                                                elem: 'desc',
+                                                                content: item.content
+                                                            }
+                                                        ]
                                                     }
                                                 };
                                             })

@@ -1,0 +1,18 @@
+block('artist').elem('description')(
+    tag()('p'),
+
+    match(function() { return this.ctx.source && this.ctx.source.name; })
+        .content()(function() {
+            var ctx = this.ctx,
+                source = ctx.source,
+                link = {
+                    block: 'link',
+                    mods: { theme: 'islands', size: 's' },
+                    url: source.url,
+                    title: 'Источник',
+                    content: source.name
+                };
+
+            return [this.ctx.content, ' &mdash; ', link]
+        })
+);

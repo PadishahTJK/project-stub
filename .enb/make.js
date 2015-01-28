@@ -30,7 +30,8 @@ var techs = {
         { path: 'libs/bem-components/design/common.blocks', check: false },
         { path: 'libs/bem-components/design/desktop.blocks', check: false },
         'common.blocks',
-        'desktop.blocks'
+        'desktop.blocks',
+        'hakaton.blocks'
     ];
 
 module.exports = function(config) {
