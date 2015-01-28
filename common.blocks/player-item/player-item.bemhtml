@@ -1,0 +1,3 @@
+block('player-item')(
+    js()(true)
+);
