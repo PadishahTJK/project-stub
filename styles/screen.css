@@ -201,3 +201,13 @@
 {
     color: #279186;
 }
+
+.style_libs ul li
+{
+    text-indent: 0;
+}
+
+.style_libs ul li .title
+{
+    display: inline-block;
+}
